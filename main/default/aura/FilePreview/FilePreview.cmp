@@ -1,0 +1,5 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,forceCommunity:availableForAllPageTypes">
+    <div class="xyz">
+    <lightning:fileCard fileId="0691t000000LVlxAAG" description="Sample Description"/>
+     </div>                                                               
+</aura:component>

@@ -1,0 +1,36 @@
+<aura:component implements="lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="NewLeadController">
+ <aura:attribute name="isOpen" type="Boolean" default="true"/>
+ <aura:attribute name="recordId" type="Id" />
+ <aura:attribute name="platformlead" type="Object" default="{'sobjectType': 'Platform_Lead__c','Email__c': 'ddd.jdjd.com', 'Account__c':'','Contact__c':''}"/>     
+ <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <force:recordData aura:id="forceRecordPlatformLead" recordId="{!v.recordId}" targetFields="{!v.platformlead}" fields="Id,Email__c,Name,Account__c, Contact__c, Opportunity__c, Lead__c" mode="EDIT" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:if isTrue="{!v.isOpen}">
+    <div aura:id="editDialog" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+        <div class="slds-modal__header"><h2 class="slds-text-heading--medium">New Record</h2></div>
+           <div class="slds-modal__content slds-p-around--medium slds-grid slds-wrap ">
+            	<lightning:recordEditForm objectApiName="Platform_Lead__c">
+             <lightning:layout multipleRows="true">
+                 <lightning:layoutItem padding="around-large" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <lightning:inputField fieldName="Contact__c" value="{!v.platformlead.Contact__c}"/></lightning:layoutItem>
+                 <lightning:layoutItem padding="around-large" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                     <lightning:inputField fieldName="Account__c" value="{!v.platformlead.Account__c}"/></lightning:layoutItem>
+                 <lightning:layoutItem padding="around-large" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+    				<lightning:inputField fieldName="Lead__c" value="{!v.platformlead.Lead__c}"/></lightning:layoutItem>
+                 <lightning:layoutItem padding="around-large" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                     <lightning:inputField fieldName="Opportunity__c" value="{!v.platformlead.Opportunity__c}"/></lightning:layoutItem>
+	             <lightning:layoutItem padding="around-large" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                     <lightning:inputField fieldName="Email__c" value="{!v.platformlead.Email__c}"/></lightning:layoutItem>
+                <lightning:layoutItem padding="around-large" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                    <lightning:inputField fieldName="Amount__c" value="{!v.platformlead.Amount__c}"/></lightning:layoutItem>
+                <lightning:layoutItem padding="around-large" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                    <lightning:inputField fieldName="Description__c" value="{!v.platformlead.Description__c}"/></lightning:layoutItem>
+			   </lightning:layout>
+               </lightning:recordEditForm></div>
+               <div class="slds-modal__footer">                
+                <lightning:button variant="neutral" label="Cancel" onclick="{!c.cancelDialog}"/>
+                <lightning:button variant="brand" label="Submit" onclick="{!c.saveRecordController}" />
+            </div></div></div>
+            <div aura:id="overlay" class="slds-backdrop slds-backdrop--open"></div></aura:if>
+</aura:component>
