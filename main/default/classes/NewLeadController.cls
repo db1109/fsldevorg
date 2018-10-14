@@ -6,7 +6,8 @@ public class NewLeadController {
       if(conid.size()>0){p.Contact__c=conid[0];}
       if(leadid.size()>0){p.Lead__c=leadid[0];}
       insert p;
-      system.System.debug(p);
+      system.System.debug(p.id);
+       system.System.debug(p.id);
       return p.id;}
   @AuraEnabled
   public static List<ListView> getListViews() {
